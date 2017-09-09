@@ -54,6 +54,11 @@ class RTIGraph():
         open_list.put(node)
         return self._traverse(node, open_list, mode='search', search=search)
     
+    def sssp(self, node):
+        open_list = Queue.Queue()
+        open_list.put(node)
+        return self._traverse(node, open_list, mode='all-paths')
+    
     def sp(self, node1, node2):
         open_list = Queue.Queue()
         open_list.put(node1)
@@ -92,3 +97,5 @@ class RTIGraph():
             return False
         elif mode == 'path':
             return marked.get(search, False)
+        elif mode == 'all-paths':
+            return marked
